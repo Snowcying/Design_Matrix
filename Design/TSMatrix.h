@@ -4,7 +4,7 @@
 //
 //  Created by Snowcying on 2017/12/24.
 //  Copyright © 2017年 Snowcying. All rights reserved.
-//
+///
 
 #ifndef TSMatrix_h
 #define TSMatrix_h
@@ -23,7 +23,7 @@ public:
     void PrintArrayWithMa();
     void PrintArray();
     void MultRepos();
-    
+
 
 
 };

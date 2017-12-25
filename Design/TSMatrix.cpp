@@ -4,7 +4,7 @@
 //
 //  Created by Snowcying on 2017/12/24.
 //  Copyright © 2017年 Snowcying. All rights reserved.
-//
+///
 
 #include <stdio.h>
 #include <iostream>
@@ -20,14 +20,14 @@ void TSMatrix::InitMatrix(){
     this->mu=mu;
     this->nu=nu;
     this->tu=tu;
-    
+
     int i,j,e;
     for(int k=1;k<=this->tu;k++){
         cin>>i>>j>>e;
         this->data[k].i=i;
         this->data[k].j=j;
         this->data[k].e=e;
-        
+
     }
     MultRepos();
 }
