@@ -7,251 +7,28 @@
 //
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#define MAXSIZE 12500
-#define SIZE 100
+#include "TSMatrix.h"
+#include "Fun.h"
 using namespace std;
 
-typedef struct
-{
-    int i,j;
-    int e;
-}Triple;
-
-typedef struct
-{
-    Triple data[MAXSIZE+1];
-    int rpos[SIZE+1];
-    int mu,nu,tu;
-}TSMatrix;
-
-void InitFirst(int &mu,int &nu,int &num){
-    cin>>mu>>nu>>num;
-}
-
-void MemsetMatrix(int a[SIZE][SIZE],int m,int n)
-{
-    for(int i=1;i<=m;i++)
-    {
-        for(int j=1;j<=n;j++)
-            a[i][j]=0;
-    }
-}
-
-void InitMatrix(int m,int n,int num,TSMatrix &M)
-{
-    void MultRepos(TSMatrix &M);
-    M.mu=m;
-    M.nu=n;
-    M.tu=num;
-    for(int i=1;i<=num;i++)
-    {
-        cin>>M.data[i].i>>M.data[i].j>>M.data[i].e;
-    }
-}
-
-
-void PrintArray(TSMatrix M)
-{
-    int len=M.tu;
-    for(int i=1;i<=len;i++)
-    {
-        cout<<M.data[i].i<<" "<<M.data[i].j<<" "<<M.data[i].e<<endl;
-    }
-}
-
-void PrintArrayWithMa(TSMatrix M)
-{
-    int a[SIZE][SIZE];
-    int num=M.tu,m=M.mu,n=M.nu;
-    MemsetMatrix(a, m, n);
-    for(int i=1;i<=num;i++)
-    {
-        a[M.data[i].i][M.data[i].j]=M.data[i].e;
-    }
-    for(int i=1;i<=m;i++)
-    {
-        for(int j=1;j<=n;j++)
-        {
-            cout<<a[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    cout<<endl;
-}
-
-bool Equel(TSMatrix m1,TSMatrix m2,int i,int j)
-{
-    if(m1.data[i].i==m2.data[j].i    &&    m1.data[i].j==m2.data[j].j    )
-        return true;
-    else return false;
-}
-
-void ArrayToMa(TSMatrix M,int a[SIZE][SIZE])
-{
-    int num=M.tu,m=M.mu,n=M.nu;
-    MemsetMatrix(a, m, n);
-    for(int i=1;i<=num;i++)
-    {
-        a[M.data[i].i][M.data[i].j]=M.data[i].e;
-    }
-}
-
-void MaToArray(TSMatrix &M,int a[SIZE][SIZE],int m,int n)
-{
-    int ValidNum=1;
-    M.mu=m;
-    M.nu=n;
-    for(int i=1;i<=m;i++){
-        for(int j=1;j<=n;j++){
-            if(a[i][j]){
-                M.data[ValidNum].i=i;
-                M.data[ValidNum].j=j;
-                M.data[ValidNum].e=a[i][j];
-                ValidNum++;
-            }
-        }
-    }
-    M.tu=ValidNum;
-    
-}
-
-void MultRepos(TSMatrix &M){
-    
-    int size=M.mu+1;
-    int Repos[size];
-    for(int i=1;i<=M.mu;i++) Repos[i]=0;
-    for(int i=1;i<=M.tu;i++){
-        Repos[M.data[i].i]++;
-    }
-
-//    for(int i=1;i<=M.mu;i++) cout<<Repos[i]<<" ";
-        M.rpos[1]=1;
-    
-    for(int i=2;i<=M.mu;i++){
-        M.rpos[i]=M.rpos[i-1]+Repos[i-1];
-    }
-    
-}
-
-void SumMatrix(TSMatrix m1,TSMatrix m2,TSMatrix &ans)
-{
-    
-    int a[SIZE][SIZE],b[SIZE][SIZE];
-    int c[SIZE][SIZE];
-    ArrayToMa(m1,a);
-    ArrayToMa(m2,b);
-    int m=m1.mu,n=m1.nu;
-    for(int i=1;i<=m;i++)
-    {
-        for(int j=1;j<=n;j++)
-        {
-            c[i][j]=a[i][j]+b[i][j];
-        }
-    }
-    MaToArray(ans,c,m,n);
-}
-
-void SubMatrix(TSMatrix m1,TSMatrix m2,TSMatrix &ans)
-{
-    int a[SIZE][SIZE],b[SIZE][SIZE];
-    int c[SIZE][SIZE];
-    ArrayToMa(m1,a);
-    ArrayToMa(m2,b);
-    int m=m1.mu,n=m1.nu;
-    for(int i=1;i<=m;i++)
-    {
-        for(int j=1;j<=n;j++)
-        {
-            c[i][j]=a[i][j]-b[i][j];
-        }
-    }
-    MaToArray(ans,c,m,n);
-}
-
-void MultiMatrix(TSMatrix m1,TSMatrix m2,TSMatrix &ans)
-{
-    int M=m1.mu,N=m2.nu,K=m1.nu;
-    int a[SIZE][SIZE],b[SIZE][SIZE];
-    int c[SIZE][SIZE];
-    ArrayToMa(m1,a);
-    ArrayToMa(m2,b);
-    for(int i=1;i<=M;i++){
-        for(int j=1;j<=N;j++){
-            for(int k=1;k<=K;k++){
-                c[i][j]+=a[i][k]*b[k][j];
-            }
-        }
-    }
-    MaToArray(ans, c, M, N);
-    
-}
-
-void QuickMultiMatrix(TSMatrix M,TSMatrix N,TSMatrix &Q){
-    if(M.nu==N.mu){
-        
-        Q.mu=M.mu;Q.nu=N.nu;Q.tu=0;
-        if(M.tu*N.tu!=0){
-            for(int arow=1;arow<=M.mu;++arow){
-                int ctemp[SIZE],tp;
-                for(int i=0;i<SIZE;i++) ctemp[i]=0;
-                Q.rpos[arow]=Q.tu+1;
-                if(arow<M.mu) tp=M.rpos[arow+1];
-                else tp=M.tu+1;
-                for(int p=M.rpos[arow];p<tp;++p){
-                    int brow=M.data[p].j,t;
-                    if(brow<N.mu) t=N.rpos[brow+1];
-                    else t=N.tu+1;
-                    for(int q=N.rpos[brow];q<t;++q){
-                        int ccol=N.data[q].j;
-                        ctemp[ccol]+=M.data[p].e * N.data[q].e;
-                    }
-                    
-                }
-                for(int ccol=1;ccol<=Q.nu;++ccol){
-                    if(ctemp[ccol]){
-                        Q.tu++;
-                        Q.data[Q.tu].i=arow;
-                        Q.data[Q.tu].j=ccol;
-                        Q.data[Q.tu].e=ctemp[ccol];
-                    }
-                }
-            }
-        }
-        
-    }
-}
-
-int main()
-{
+int main(){
+    //define
+    TSMatrix M,N,ANS;
     freopen("data.txt","r",stdin);
     
-    int mu1,nu1,mu2,nu2,num1,num2;
-    InitFirst(mu1,nu1,num1);
-    InitFirst(mu2,nu2,num2);
-
-    TSMatrix m1,m2,m3;
-    InitMatrix(mu1,nu1,num1,m1);
-    MultRepos(m1);
-    InitMatrix(mu2,nu2,num2,m2);
-    MultRepos(m2);
+    //init and print
+    M.InitMatrix();
+    M.PrintArrayWithMa();
     
-    cout<<"Matrix1:"<<endl;
-    PrintArrayWithMa(m1);
-//    PrintArray(m1);
+    N.InitMatrix();
+    N.PrintArrayWithMa();
     
-//    MultRepos(m1);
+    //multi
+    QuickMultiMatrix(M, N, ANS);
     
-    cout<<"Matrix2:"<<endl;
-    PrintArrayWithMa(m2);
-//    PrintArray(m2);
-
-    QuickMultiMatrix(m1, m2, m3);
-
-    cout<<"ans:"<<endl;
-    PrintArrayWithMa(m3);
-//    PrintArray(m3);
-
+    //print the answer
+    ANS.PrintArrayWithMa();
+    
     return 0;
 }
+
