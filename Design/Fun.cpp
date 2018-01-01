@@ -34,16 +34,16 @@ void ArrayToMa(TSMatrix M,int a[SIZE][SIZE])
 
 void MaToArray(TSMatrix &M,int a[SIZE][SIZE],int m,int n)
 {
-    int ValidNum=1;
+    int ValidNum=0;
     M.mu=m;
     M.nu=n;
     for(int i=1;i<=m;i++){
         for(int j=1;j<=n;j++){
             if(a[i][j]){
+                ValidNum++;
                 M.data[ValidNum].i=i;
                 M.data[ValidNum].j=j;
                 M.data[ValidNum].e=a[i][j];
-                ValidNum++;
             }
         }
     }
