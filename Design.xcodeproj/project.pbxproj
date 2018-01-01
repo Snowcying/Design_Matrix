@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FC1B8E3B1FE4189200AF71DF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC1B8E3A1FE4189200AF71DF /* main.cpp */; };
+		FC904DE31FFA7FA200AC48B1 /* TSMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC904DDF1FFA7FA200AC48B1 /* TSMatrix.cpp */; };
+		FC904DE41FFA7FA200AC48B1 /* Fun.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC904DE01FFA7FA200AC48B1 /* Fun.cpp */; };
+		FC904DE81FFA7FE300AC48B1 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC904DE61FFA7FE300AC48B1 /* Menu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +29,13 @@
 		FC1B8E371FE4189200AF71DF /* Design */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Design; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC1B8E3A1FE4189200AF71DF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		FC1B8E411FE419E700AF71DF /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
+		FC904DDE1FFA7FA200AC48B1 /* Fun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fun.h; sourceTree = "<group>"; };
+		FC904DDF1FFA7FA200AC48B1 /* TSMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TSMatrix.cpp; sourceTree = "<group>"; };
+		FC904DE01FFA7FA200AC48B1 /* Fun.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Fun.cpp; sourceTree = "<group>"; };
+		FC904DE11FFA7FA200AC48B1 /* Triple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triple.h; sourceTree = "<group>"; };
+		FC904DE21FFA7FA200AC48B1 /* TSMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMatrix.h; sourceTree = "<group>"; };
+		FC904DE61FFA7FE300AC48B1 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Menu.cpp; path = ../../Design/Design/Menu.cpp; sourceTree = "<group>"; };
+		FC904DE71FFA7FE300AC48B1 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Menu.h; path = ../../Design/Design/Menu.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,13 @@
 		FC1B8E391FE4189200AF71DF /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				FC904DE61FFA7FE300AC48B1 /* Menu.cpp */,
+				FC904DE71FFA7FE300AC48B1 /* Menu.h */,
+				FC904DE01FFA7FA200AC48B1 /* Fun.cpp */,
+				FC904DDE1FFA7FA200AC48B1 /* Fun.h */,
+				FC904DE11FFA7FA200AC48B1 /* Triple.h */,
+				FC904DDF1FFA7FA200AC48B1 /* TSMatrix.cpp */,
+				FC904DE21FFA7FA200AC48B1 /* TSMatrix.h */,
 				FC1B8E411FE419E700AF71DF /* data.txt */,
 				FC1B8E3A1FE4189200AF71DF /* main.cpp */,
 			);
@@ -121,7 +138,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC904DE41FFA7FA200AC48B1 /* Fun.cpp in Sources */,
 				FC1B8E3B1FE4189200AF71DF /* main.cpp in Sources */,
+				FC904DE81FFA7FE300AC48B1 /* Menu.cpp in Sources */,
+				FC904DE31FFA7FA200AC48B1 /* TSMatrix.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
