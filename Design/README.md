@@ -1,7 +1,5 @@
 矩阵乘法（c++）
 ====
-Fun.h & Fun.cpp include primary  <br>
-TSMatrix.h & TSMatrix.cpp include the class <br>
 1.程序功能：
 ====
 稀疏矩阵是指那些多数元素为0的矩阵。利用“稀疏”特点进行存储和计算可以大大节省存储空间，提高计算效率。实现了一个能进行稀疏矩阵基本运算的运算器。<br>
